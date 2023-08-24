@@ -6,11 +6,7 @@ class ResultView extends View {
   _errorMessage = 'No recipes found for your query! Please try again ;)';
   _message = '';
 
-  // addHandlerResults(handler) {
-  //   ['hashchange', 'load'].forEach(event =>
-  //     window.addEventListener(event, handler)
-  //   );
-  // }
+  // addHandlerResults(handler) {}
 
   _generateMarkup() {
     return this._data.map(this.#generateMarkupPreview).join('');

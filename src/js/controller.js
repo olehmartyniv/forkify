@@ -10,11 +10,10 @@ const test = () => console.log('test');
 
 const controlRecipes = async function () {
   try {
-    recipeView.renderSpinner();
-
     const id = window.location.hash.slice(1);
 
     if (!id) return;
+    recipeView.renderSpinner();
 
     // 1) Loading recipe
     await model.loadRecipe(id);
@@ -28,12 +27,11 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function () {
   try {
-    resultsView.renderSpinner();
-
     // 1) Get search query
     const query = searchView.getQuery();
 
     if (!query) return;
+    resultsView.renderSpinner();
 
     // 2) Load search results
     await model.loadSearchResults(query);
