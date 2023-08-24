@@ -25,8 +25,8 @@ export const loadRecipe = async function (id) {
       cookingTime: recipe.cooking_time,
       ingredients: recipe.ingredients,
     };
-  } catch (err) {
-    throw err;
+  } catch (error) {
+    throw error;
   }
 };
 
@@ -44,8 +44,7 @@ export const loadSearchResults = async function (query) {
         image: rec.image_url,
       };
     });
-    console.log(state.search);
-  } catch (err) {
-    throw err;
+  } catch (error) {
+    throw error;
   }
 };
