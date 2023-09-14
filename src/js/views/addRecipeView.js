@@ -1,5 +1,4 @@
 import View from './View';
-import icons from 'url:../../img/icons.svg';
 
 class AddRecipeView extends View {
   _parentElement = document.querySelector('.upload');
@@ -14,14 +13,6 @@ class AddRecipeView extends View {
     this.#addHandlerHideWindow();
   }
 
-  addHandlerUpload(handler) {
-    this._parentElement.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const data = [...new FormData(this)];
-      handler(Object.fromEntries(data));
-    });
-  }
-
   #toggleWindow() {
     this._overlay.classList.toggle('hidden');
     this._window.classList.toggle('hidden');
@@ -34,6 +25,14 @@ class AddRecipeView extends View {
   #addHandlerHideWindow() {
     this._btnClose.addEventListener('click', this.#toggleWindow.bind(this));
     this._overlay.addEventListener('click', this.#toggleWindow.bind(this));
+  }
+
+  addHandlerUpload(handler) {
+    this._parentElement.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const data = [...new FormData(this)];
+      handler(Object.fromEntries(data));
+    });
   }
 
   _generateMarkup() {}

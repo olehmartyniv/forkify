@@ -126,20 +126,20 @@ class RecipeView extends View {
     `;
   }
 
-  #generateMarkupIngredient(ingridients) {
+  #generateMarkupIngredient(ingredients) {
     return `
       <li class="recipe__ingredient">
         <svg class="recipe__icon">
           <use href="${icons}#icon-check"></use>
         </svg>
         <div class="recipe__quantity">${
-          ingridients.quantity
-            ? new Fraction(ingridients.quantity).toString()
+          ingredients.quantity
+            ? new Fraction(ingredients.quantity).toString()
             : ''
         }</div>
         <div class="recipe__description">
-          <span class="recipe__unit">${ingridients.unit ?? ''}</span>
-          ${ingridients.description}
+          <span class="recipe__unit">${ingredients.unit ?? ''}</span>
+          ${ingredients.description}
         </div>
       </li>
     `;

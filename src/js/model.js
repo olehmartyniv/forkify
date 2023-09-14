@@ -1,3 +1,4 @@
+import { async } from 'regenerator-runtime';
 import { API_URL } from './config';
 import { RES_PER_PAGE } from './config';
 import { getJSON } from './helpers';
@@ -98,6 +99,27 @@ export const deleteBookmark = function (id) {
   if (id === state.recipe.id) state.recipe.bookmarked = false;
 
   persistBookmarks();
+};
+
+export const uploadRecipe = async function (newRecipe) {
+  try {
+    const ingredients = Object.entries(newRecipe)
+      .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
+      .map(ing => {
+        const ingArr = ing[1].replaceAll(' ', '').split(',');
+
+        if (ingArr.length !== 3)
+          throw new Error(
+            'Wrong ingredient format! Please use the correct format :)'
+          );
+
+        const [quantity, unit, description] = ingArr;
+        return { quantity: quantity ? +quantity : null, unit, description };
+      });
+    console.log(ingredients);
+  } catch (error) {
+    throw error;
+  }
 };
 
 const init = function () {

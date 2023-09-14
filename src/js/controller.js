@@ -8,6 +8,7 @@ import addRecipeView from './views/addRecipeView.js';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+import { async } from 'regenerator-runtime';
 
 const controlRecipes = async function () {
   try {
@@ -86,9 +87,14 @@ const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
-const controlAddRecipe = function (newRecipe) {
-  console.log(newRecipe);
-  // Upload new recipe data
+const controlAddRecipe = async function (newRecipe) {
+  try {
+    // Upload new recipe data
+    await model.uploadRecipe(newRecipe);
+  } catch (error) {
+    console.log('💥', error);
+    addRecipeView.renderError(error);
+  }
 };
 
 const init = function () {
