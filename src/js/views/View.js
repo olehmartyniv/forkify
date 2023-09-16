@@ -7,6 +7,14 @@ export default class View {
     this._parentElement.innerHTML = '';
   }
 
+  /**
+   * Render the recieved object to the DOM
+   * @param {Object | Object[]} data The data to be rendered (e.g recipe)
+   * @returns {function} Render error if no data
+   * @this {Object} View instance
+   * @author Oleh Martyniv
+   * @todo Finish implmentation
+   */
   render(data) {
     if (!data || (Array.isArray(data) && !data.length))
       return this.renderError();
